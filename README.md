@@ -36,3 +36,4 @@ python hash_password.py -p ${YOU_PASSWORD} -s ${PASSWORD_STRENGTH}
 ```
 
 ## License
+* MIT
