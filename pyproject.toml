@@ -7,9 +7,9 @@ readme = "README.md"
 packages = [{include = "password_hash"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.12"
 password-strength = "^0.0.3.post2"
-
+passlib = "^1.7.4"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.0.0"
