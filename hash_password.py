@@ -1,26 +1,27 @@
 import string
 import random
+
 from getpass import getpass
-from optparse import OptionParser
+from argparse import ArgumentParser
 
 from passlib.hash import sha512_crypt
 from password_strength import PasswordPolicy
 
 
-def _get_parameters() -> OptionParser:
-    parser = OptionParser()
-    parser.add_option("-p",
-                      "--password",
-                      help="The password you want to hash",
-                      default=None,
-                      type="string",
-                      dest="pwd")
-    parser.add_option("-s",
-                      "--strength",
-                      help="The password strength",
-                      default=0.66,
-                      type="float",
-                      dest="strength")
+def _get_parameters() -> ArgumentParser:
+    parser = ArgumentParser(description="Password Hash Tool")
+    parser.add_argument("-p",
+                        "--password",
+                        help="The password you want to hash",
+                        default=None,
+                        type=str,
+                        dest="pwd")
+    parser.add_argument("-s",
+                        "--strength",
+                        help="The password strength",
+                        default=0.66,
+                        type=float,
+                        dest="strength")
 
     return parser
 
@@ -39,9 +40,9 @@ def gen_salt(length: int = 16) -> str:
 def main():
     # Load parameters
     parser = _get_parameters()
-    (options, args) = parser.parse_args()
-    pwd = options.pwd
-    strength = options.strength
+    args = parser.parse_args()
+    pwd = args.pwd
+    strength = args.strength
 
     # Setup password strength level
     policy = PasswordPolicy.from_names(strength=strength)
