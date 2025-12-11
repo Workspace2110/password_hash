@@ -1,19 +1,21 @@
-[tool.poetry]
+[project]
 name = "password-hash"
-version = "1.0.0"
-description = "For hashing password with python"
-authors = ["Masahiro Koti <workspace2110@gmail.com>"]
 readme = "README.md"
-packages = [{include = "password_hash"}]
+description = "A secure and modern library for hashing passwords."
+version = "1.1.0"
+requires-python = ">=3.14"
+authors = [{name = "Masahiro Koti", email="workspace2110@gmail.com"}]
+license = {text = "MIT"}
+dependencies = [
+    "passlib>=1.7.4",
+    "password-strength>=0.0.3.post2",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-password-strength = "^0.0.3.post2"
-passlib = "^1.7.4"
-
-[tool.poetry.group.dev.dependencies]
-flake8 = "^6.0.0"
+[project.optional-dependencies]
+dev = [
+    "flake8>=7.3.0",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
